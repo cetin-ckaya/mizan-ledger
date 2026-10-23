@@ -1,0 +1,19 @@
+# Maven build çıktısı
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Sırlar: gerçek şifreler sadece .env'de durur, repoya girmez
+.env
+
+# Oracle veri klasörü (Docker volume, Gün 3)
+oracle-data/
+
+# İşletim sistemi dosyaları
+Thumbs.db
+.DS_Store
