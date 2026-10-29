@@ -14,6 +14,9 @@ target/
 # Oracle veri klasörü (Docker volume, Gün 3)
 oracle-data/
 
+# Kişisel notlar (repoya girmez)
+MULAKAT.md
+
 # İşletim sistemi dosyaları
 Thumbs.db
 .DS_Store

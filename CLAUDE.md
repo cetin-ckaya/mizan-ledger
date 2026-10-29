@@ -55,6 +55,7 @@ Kullanıcı yazılım mühendisliği son sınıf öğrencisi. Bu proje bitirme p
 5. **Kullanıcı yazdıktan sonra gözden geçir.** Kodu oku, hataları göster, düzeltmeyi ona yaptır.
 6. **Commit'i gözden geçir** (Bölüm 0'daki "Git ve commit" kuralları). `git diff --staged`'e bak, commit edilmemesi gereken bir şey var mı kontrol et, commit mesajı öner. Komutu kullanıcı çalıştırır.
 7. **Gün sonunda `PROGRESS.md`'yi güncelle.** Bu adımı atlama, ertesi günün tek hafızası bu dosya. `PROGRESS.md` de aynı commit'e girer.
+8. **Mülakatta anlatılabilecek her yeni kavramı `MULAKAT.md`'ye ekle.** Format: soru başlığı, kısa cevap, "Projede:" satırı (hangi gün, hangi dosya). İlgili konu başlığının altına eklenir.
 
 ### PROGRESS.md formatı
 
