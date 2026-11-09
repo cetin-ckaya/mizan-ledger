@@ -1,0 +1,29 @@
+services:
+  oracle:
+
+   container_name: mizan-oracle
+
+   ports:
+     - 1521:1521
+
+   environment:
+     ORACLE_PASSWORD: ${ORACLE_PASSWORD}
+
+   image: gvenzl/oracle-free
+
+   volumes:
+     - oracle_data:/opt/oracle/oradata
+
+   healthcheck:
+     test: ["CMD","healthcheck.sh"]
+     interval: 10s
+     timeout: 5s
+     retries: 5
+     start_period: 60s
+
+
+
+volumes:
+ oracle_data:
+
+
