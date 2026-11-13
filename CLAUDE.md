@@ -188,7 +188,7 @@ Türkçe konuş. Teknik terimleri İngilizce bırak (transaction, partition, sag
 | Katman | Seçim | Faz | Neden |
 |---|---|---|---|
 | Dil | **Java 21** | 1 | Hedef sektörün dili, LTS |
-| Çatı | **Spring Boot 3.x** | 1 | Banka ilanlarında standart |
+| Çatı | **Spring Boot 4.x** (4.1.2 ile başlandı) | 1 | Banka ilanlarında standart; 3.x açık kaynak desteği bittiği için 4.x |
 | Veritabanı | **Oracle Database Free (23ai)** | 1 | Bankaların tamamı Oracle kullanıyor |
 | Şema yönetimi | **Flyway** | 1 | Şema versiyonlu |
 | API dokümantasyonu | **springdoc-openapi (Swagger UI)** | 1 | Arayüz yerine API'yi tarayıcıdan göstermek |
