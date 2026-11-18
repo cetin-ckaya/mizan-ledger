@@ -1,8 +1,24 @@
 # İlerleme Kaydı
 
+## Hafta 1 değerlendirmesi (Gün 1–5)
+**Biten:** Aşama 0 tamamlandı: Docker'da Oracle (compose + volume + healthcheck), SQLcl, `mizan` uygulama kullanıcısı (least privilege), Spring Boot 4.1.2 bağlantısı, Flyway.
+**Oracle kontrol listesi:** A1 ✔, A5 ✔
+**Sarkan:** yok.
+**Kullanıcının yorumu:** En çok Oracle kurulumu zorladı (önceki deneyim PostgreSQL). Günlük iş miktarı yeterli.
+**Gözlem:** Tekrarlayan hata türü "yanlış isim → sessiz hata" (`ORACLE_PWD`, `password`, `spring.datasource.name`, `FREEDB1`). Commit disiplini: iki kez commit adımı atlandı/karıştı (Gün 2 mesaj, Gün 4 tek commit). system/mizan ayrımı sorusu cevaplanmadı, Hafta 2'de tekrar sorulacak.
+**Hafta 2 hedefi:** `feature/ledger-schema` branch'i, ilk PR. Çift kayıt kavramı (Gün 6), ACCOUNT / JOURNAL_ENTRY / LEDGER_LINE migration'ları (A2, A3, A4), entity'ler, `POST /accounts` + Swagger.
+
+## Gün 5 — 2026-11-18 (Faz 1, Hafta 1)
+**Yapıldı:** İlk Flyway migration'ları: `V1__create_flyway_demo.sql` (demo tablo), `V2__drop_flyway_demo.sql` (kaldırma). `flyway_schema_history` incelendi. Checksum deneyi yapıldı: çalışmış V1 değiştirilince uygulama açılmadı, geri alınınca açıldı. Haftalık değerlendirme.
+**Commit:** `chore: add first flyway migrations`
+**Takıldığı yer:** V1'de `id NUMBER,PRIMARY KEY` (virgül → `ORA-00906`), `VARCHAR` yerine `VARCHAR2`, dosya adında `flayway`. Başarısız ilk deneme `flyway_schema_history`'ye `success = 0` olarak kaydedildi → `Detected failed migration`; kayıt elle silindi (repair). Flyway tablosu tırnaklı küçük harfle oluşturulduğu için `SELECT ... FROM flyway_schema_history` `ORA-00942` verdi; `"flyway_schema_history"` gerekiyor. V2 ilk yazımda tablo adı eksikti (`DROP TABLE;`), çalıştırmadan önce düzeltildi.
+**Oracle kontrol listesi:** A5 ✔ → **AŞAMA 0 BİTTİ**
+**Sıradaki:** Gün 6 — `feature/ledger-schema` branch'i açılacak. [V] double entry bookkeeping; kâğıt üzerinde 3 örnek işlemin borç/alacak satırları.
+**Not:** Kullanıcı PostgreSQL'den geliyor; Oracle farkları (DDL transaction dışı, tırnaklı isimler, `VARCHAR2`) bilinçli olarak vurgulanmalı. V1 ve V2 repoda kalıcı (çalışmış migration silinmez).
+
 ## Gün 4 — 2026-11-13 (Faz 1, Hafta 1)
 **Yapıldı:** JDK 21 (Temurin 21.0.13) kuruldu, `JAVA_HOME` ayarlı. start.spring.io ile proje oluşturuldu: Spring Boot **4.1.2** (Initializr artık 3.x sunmuyor; CLAUDE.md teknoloji tablosu 4.x olarak güncellendi), Maven, Java 21, `com.cetinckaya.mizan`; Web, JPA, Validation, Flyway, Oracle Driver. IntelliJ IDEA'da açıldı (SDK temurin-21, language level 21). `application.properties`: URL `FREEPDB1`, kullanıcı `mizan`, şifre `${DB_PASSWORD}` (IntelliJ Run Configuration'da ortam değişkeni), `ddl-auto=validate`. Uygulama `Started MizanApplication` ile kalktı; HikariCP bağlandı, Flyway şemayı `MIZAN` olarak gördü.
-**Commit:** `docs: update tech stack to spring boot 4`, `chore: bootstrap spring boot project with oracle datasource`
+**Commit:** `chore: bootstrap spring boot project with oracle datasource` (CLAUDE.md sürüm değişikliği de bu commit'e girdi; ayrı `docs:` commit'i atlanmıştı, push edildiği için düzeltilmedi)
 **Takıldığı yer:** IntelliJ 2025.2.3, Maven wrapper'ın istediği Maven 3.10.0'ı okuyamadı (`Guice/MissingImplementation ArtifactHandlerManager`); IntelliJ güncellendi (2026.3), wrapper modunda çalışıyor. Proje SDK'sı openjdk-26 seçiliydi, temurin-21 yapıldı. `application.properties`'te `FREEDB1` ve `spring.datasource.name` (doğrusu `username`) hataları. Ortam değişkeni yokken Spring `${...}` metnini şifre olarak gönderdi → `ORA-01017`. 8080'i otomatik başlayan ayrı bir Windows servisi (Apache Tomcat 11) tutuyordu.
 **Oracle kontrol listesi:** — (A5 Gün 5'te)
 **Sıradaki:** Gün 5 — [V] Flyway; ilk deneme migration'ı (`src/main/resources/db/migration/V1__...sql`). Haftalık değerlendirme. **[Oracle A5] → Aşama 0 bitti.**
