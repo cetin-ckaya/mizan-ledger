@@ -1,5 +1,13 @@
 # İlerleme Kaydı
 
+## Gün 6 — 2026-11-20 (Faz 1, Hafta 2)
+**Yapıldı:** `feature/ledger-schema` branch'i açıldı (artık `main`'e doğrudan commit yok). Çift kayıt kâğıt üzerinde: nakit yatırma (Kasa D / Ali C), havale (Ali D / Ayşe C), ters kayıt (Ali C / Ayşe D, `reverses_entry` → 2). Aktif/pasif hesap ve D/C yönü, `balance = SUM(C) - SUM(D)` (müşteri hesabı). `docs/double-entry.md` yazıldı.
+**Commit:** `docs: add double-entry bookkeeping examples`
+**Takıldığı yer:** 2. ve 3. işlemin yönlerini kullanıcı doğru buldu. Bakiye hesabı (C − D) ve "bakiye kolonu neden yok" sorusunu çözemedi, açıklandı. Kullanıcı "toplam sıfır" ve "silme yerine ters kayıt" sorularını kendi cümleleriyle cevapladı (Türkçe); dosyanın İngilizce metnini kullanıcının isteğiyle asistan yazdı.
+**Oracle kontrol listesi:** —
+**Sıradaki:** Gün 7 — [V] designing a ledger database schema; paket yapısı (account / ledger / transfer / common), ACCOUNT migration'ı (constraint, check constraint elle). **[Oracle A2]**
+**Not:** Kasa (bankanın nakit hesabı) da bir ACCOUNT kaydı olacak; ilk para girişi için karşı hesap gerekiyor. Gün 7'de ACCOUNT tasarımında bunu hatırlat (müşteri hesabı mı, iç hesap mı ayrımı). "Ayşe parayı harcadıysa ters kayıt eksiye düşürür" kenar durumu Gün 70'e not edildi. Kullanıcı İngilizce metin yazmakta zorlanıyor; belgelerde Türkçe cevap + çeviri yöntemi işe yaradı.
+
 ## Hafta 1 değerlendirmesi (Gün 1–5)
 **Biten:** Aşama 0 tamamlandı: Docker'da Oracle (compose + volume + healthcheck), SQLcl, `mizan` uygulama kullanıcısı (least privilege), Spring Boot 4.1.2 bağlantısı, Flyway.
 **Oracle kontrol listesi:** A1 ✔, A5 ✔
